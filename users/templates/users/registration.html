@@ -1,0 +1,22 @@
+<form action="{% url 'users:registration' %}" method="post">
+  {% csrf_token %}
+
+
+    {% if form.non_field_errors %}
+        {{ form.non_field_errors.0 }}
+    {% elif form.password2.errors %}
+        {{ form.password2.errors.0}}
+    {% endif %}
+
+
+  {{ form.email }}
+
+  {{ form.password1 }}
+
+  {{ form.password2 }}
+
+
+  <input type="submit" value="Зарегистрироваться">
+
+
+</form>
