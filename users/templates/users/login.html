@@ -1,0 +1,13 @@
+<form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    {% if form.email.errors %}
+        {{ form.email.errors.0 }}
+    {% elif form.non_field_errors %}
+        {{ form.non_field_errors.0 }}
+    {% endif %}
+
+    {{ form.email }}
+    {{ form.password }}
+    <input type="submit" value="Войти">
+    Нет аккаунта? <a href="{% url 'users:registration' %}">Зарегистрироваться</a>
+</form>
