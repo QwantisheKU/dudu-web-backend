@@ -22,8 +22,8 @@ class Item(models.Model):
         (3, "Высокий"),
     ]
     priority = models.IntegerField(choices=PRIORITIES, null=True)
-    is_done = models.BooleanField(null=False)
-    tag_id = models.OneToOneField(
+    is_done = models.BooleanField(null=True, blank=True)
+    tag_id = models.ForeignKey(
         Tag,
         on_delete=models.SET_NULL,
         null=True
