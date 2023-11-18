@@ -1,13 +1,26 @@
 from rest_framework import serializers
 from .models import Item, Tag
+from users.models import UserModel
 
-# TODO: foreign keys in serializers
-class AuthorSerializer(serializers.ModelSerializer):
+class ItemSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Item
-        fields = ['id', 'title', 'description', 'deadline', 'priority', 'is_done', 'tag_id', 'user_id']
+        fields = ['id', 'title', 'description', 'deadline', 'priority', 'is_done', 'tag_id', 'user']
 
-class BookSerializer(serializers.ModelSerializer):
+class TagSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     class Meta:
         model = Tag
-        fields = ['id', 'name', 'user_id']
+        fields = ['id', 'name', 'user']
+
+class RegisterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = ['id','email','password']
+        extra_kwargs = {
+            'password': {'write_only': True},
+        }
+    def create(self, validated_data):
+        user = UserModel.objects.create_user(email = validated_data['email'], password = validated_data['password'])
+        return user

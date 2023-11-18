@@ -3,7 +3,7 @@ from users.models import UserModel
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, null=False)
-    user_id = models.ForeignKey(
+    user = models.ForeignKey(
         UserModel,
         on_delete=models.DO_NOTHING,
         null=False
@@ -23,12 +23,12 @@ class Item(models.Model):
     ]
     priority = models.IntegerField(choices=PRIORITIES, null=True)
     is_done = models.BooleanField(null=True, blank=True)
-    tag_id = models.ForeignKey(
+    tag = models.ForeignKey(
         Tag,
         on_delete=models.SET_NULL,
         null=True
     )
-    user_id = models.ForeignKey(
+    user = models.ForeignKey(
         UserModel,
         on_delete=models.DO_NOTHING,
         null=False
