@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "users",
     "todo",
     "rest_framework",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [

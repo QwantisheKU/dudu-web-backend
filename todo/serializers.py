@@ -4,6 +4,7 @@ from users.models import UserModel
 
 class ItemSerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    tag_id = serializers.IntegerField()
     class Meta:
         model = Item
         fields = ['id', 'title', 'description', 'deadline', 'priority', 'is_done', 'tag_id', 'user']
