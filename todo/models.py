@@ -26,6 +26,7 @@ class Item(models.Model):
     tag = models.ForeignKey(
         Tag,
         on_delete=models.SET_NULL,
+        blank=True,
         null=True
     )
     user = models.ForeignKey(
