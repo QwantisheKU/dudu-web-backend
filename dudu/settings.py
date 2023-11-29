@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     "users",
     "todo",
+    "todo_web",
     "rest_framework",
     "drf_yasg",
 ]
@@ -179,4 +180,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'users.UserModel'
 LOGIN_URL = '/users/login/'
-LOGIN_REDIRECT_URL = '/users/success/'
+LOGIN_REDIRECT_URL = '/items/all/'

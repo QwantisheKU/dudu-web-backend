@@ -1,0 +1,11 @@
+{% if not object_list %}
+    У вас еще нет созданных задач
+{% endif %}
+
+{% for item in object_list %}
+    <a href="{% url 'items:item_detail' item.pk %}">{{ item.title }}</a>
+    {{ item.deadline|date:'d m Y' }}
+    {{ item.tag }}
+{% endfor %}
+
+<a href="{% url 'items:item_create' %}" type="button">Добавить</a>

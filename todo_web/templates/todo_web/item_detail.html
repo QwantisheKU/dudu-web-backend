@@ -1,0 +1,17 @@
+
+<form method="post">
+    {% csrf_token %}
+{#    {{ form.as_p }}#}
+
+Название    {{ form.title }}
+Описание    {{ form.description }}
+Дедлайн    {{ form.deadline }}
+Приоритет    {{ form.priority }}
+выполнено    {{ form.is_done }}
+Тег    {{ form.tag }}
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<a href="{% url 'items:all_items' %}" type="button">Назад</a>
+<a href="{% url 'items:item_delete' item.pk %}" type="button">Удалить задачу</a>

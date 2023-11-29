@@ -1,0 +1,16 @@
+{% if form.errors %}
+    {{ form.errors }}
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+
+    Название    {{ form.title }}
+Описание    {{ form.description }}
+Дедлайн    {{ form.deadline }}
+Приоритет    {{ form.priority }}
+выполнено    {{ form.is_done }}
+Тег    {{ form.tag }}
+     <button type="submit">Сохранить</button>
+</form>
+
+<a href="{% url 'items:all_items' %}" type="button">Назад</a>

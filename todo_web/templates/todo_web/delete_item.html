@@ -1,0 +1,9 @@
+<form method="post">
+
+    {% csrf_token %}
+    Уверены что хотите удалить задачу {{ item.title }} ?
+    <button type="submit">Удалить</button>
+
+</form>
+
+
