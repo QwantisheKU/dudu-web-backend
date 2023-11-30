@@ -1,13 +1,73 @@
-<form action="{% url 'users:login' %}" method="post">
-    {% csrf_token %}
-    {% if form.email.errors %}
-        {{ form.email.errors.0 }}
-    {% elif form.non_field_errors %}
-        {{ form.non_field_errors.0 }}
-    {% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style_login.css' %}">
 
-    {{ form.email }}
-    {{ form.password }}
-    <input type="submit" value="Войти">
-    Нет аккаунта? <a href="{% url 'users:registration' %}">Зарегистрироваться</a>
-</form>
+</head>
+<body>
+    <div class="container-fluid ps-md-0">
+        <div class="row g-0">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+            
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4">Добро пожаловать!</h3>
+                                
+                                <form action="{% url 'users:login' %}" method="post">
+                                    {% csrf_token %}
+                                    
+                                    <div class="form-floating mb-3">
+                                        {{ form.email }}
+                                        <label for="{{ form.email.auto_id }}">Email адрес</label>
+                                        <script>
+                                            document.getElementById("{{ form.email.auto_id }}").setAttribute("placeholder", "name@example.com");
+                                        </script>
+                                    </div>
+                                
+                                    <div class="form-floating mb-3">
+                                        {{ form.password }}
+                                        <label for="{{ form.password.auto_id }}">Пароль</label>
+                                        <script>
+                                            document.getElementById("{{ form.password.auto_id }}").setAttribute("placeholder", "Password");
+                                        </script>
+                                    </div>
+
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
+                                        <label class="form-check-label" for="rememberPasswordCheck">
+                                        Запомнить пароль
+                                        </label>
+                                    </div>
+                                
+                                    <div class="d-grid">
+                                        <button class="btn btn-lg btn-custom text-uppercase fw-bold mb-2" type="submit">Войти</button>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <a class="small" href="#">Забыли пароль?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="{% url 'users:registration' %}">Зарегистрироваться</a>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>      
+</body>
+</html>

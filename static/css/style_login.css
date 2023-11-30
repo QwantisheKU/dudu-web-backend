@@ -1,0 +1,74 @@
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.bg-image {
+    background-image: url('../img/illustrations/illustration-lock.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-heading {
+    font-weight: 300;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.btn-custom {
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid #000000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-custom:hover, .btn-custom:focus {
+    background-color: #000000; 
+    color: #FFFFFF;
+}
+
+.form-control, .btn-custom, .form-check-input {
+    border-radius: 0.25rem;
+}
+
+a.small {
+    color: #000000;
+    position: relative;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+a.small::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+a.small:hover::after, a.small:focus::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.login .form-floating {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.login .container {
+    background-color: #fffff0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+}

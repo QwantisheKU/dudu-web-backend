@@ -1,0 +1,103 @@
+body {
+    background: #6E6E6E;
+    background: linear-gradient(to right, #6E6E6E, #9c9898);
+}
+
+.container {
+    max-width: 1250px;
+    margin: auto;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.card-title {
+    font-size: 2rem;
+    color: #333333;
+}
+
+.form-floating {
+    margin-bottom: 20px;
+}
+
+.form-floating label {
+    font-size: 1.2rem; 
+    color: #555555; 
+}
+
+.form-control {
+    font-size: 1.1rem; 
+    background-color: #f8f8f8; 
+    border: 1px solid #dddddd; 
+}
+
+.btn-custom, .btn-google, .btn-vk {
+    font-size: 1.1rem; 
+}
+
+.small {
+    font-size: 1rem; 
+}
+
+.card-img-left {
+    width: 50%;
+    background-image: url('../img/illustrations/illustration-lock.jpg');
+    background-size: cover;
+}
+  
+.btn-custom {
+    background-color: transparent; 
+    color: #000000; 
+    border: 2px solid #000000; 
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+.btn-custom:hover, .btn-custom:focus {
+    background-color: #000000;
+    color: #FFFFFF; 
+}
+
+a.small {
+    color: #000000;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+a.small::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+a.small:hover::after, a.small:focus::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+  
+.btn-google {
+    color: white !important;
+    background-color: #0f9e67;
+}
+
+.btn-google:hover, .btn-google:focus {
+    background-color: #0c7b4e; 
+}
+  
+.btn-vk {
+    color: white !important; 
+    background-color: #4c75a3; 
+  }
+  
+  .btn-vk:hover, .btn-vk:focus {
+    background-color: #395a80; 
+  }
+  

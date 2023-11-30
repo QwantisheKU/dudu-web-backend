@@ -1,23 +1,88 @@
-<form action="{% url 'users:registration' %}" method="post">
-  {% csrf_token %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style_register.css' %}">
+    
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+              <div class="card-img-left d-none d-md-flex">
+                  
+              </div>
+                <div class="card-body p-4 p-sm-5">
+                    <h5 class="card-title text-center mb-5 fw-light fs-5">Регистрация</h5>
+                    <form action="{% url 'users:registration' %}" method="post">
+                              {% csrf_token %}
+                        
+                        <!-- Отображение ошибок -->
+                              {% if form.non_field_errors %}
+                                  {{ form.non_field_errors.0 }}
+                              {% elif form.password2.errors %}
+                                  {{ form.password2.errors.0}}
+                              {% endif %}
 
+                        <!-- Поля формы -->
+                        <div class="form-floating mb-3">
+                              {{ form.email }}
+                              <label for="{{ form.email.auto_id }}">Email адрес</label>
+                              <script>
+                                  document.getElementById("{{ form.email.auto_id }}").setAttribute("placeholder", "name@example.com");
+                              </script>
+                        </div>
 
-    {% if form.non_field_errors %}
-        {{ form.non_field_errors.0 }}
-    {% elif form.password2.errors %}
-        {{ form.password2.errors.0}}
-    {% endif %}
+                        <hr>
+                  
+                        <div class="form-floating mb-3">
+                              {{ form.password1 }}
+                              <label for="{{ form.password1.auto_id }}">Пароль</label>
+                              <script>
+                                  document.getElementById("{{ form.password1.auto_id }}").setAttribute("placeholder", "Password");
+                              </script>
+                        </div>
+                  
+                        <div class="form-floating mb-3">
+                              {{ form.password2 }}
+                              <label for="{{ form.password2.auto_id }}">Повторите пароль</label>
+                              <script>
+                                  document.getElementById("{{ form.password2.auto_id }}").setAttribute("placeholder", "Confirm Password");
+                              </script>
+                        </div>
+                  
+                        <div class="d-grid mb-2">
+                                <button class="btn btn-lg btn-custom text-uppercase fw-bold mb-2" type="submit">Зарегистрироваться</button>
+                        </div>
 
+                        <a class="d-block text-center mt-2 small" href="{% url 'users:login' %}">У вас есть учетная запись? войти в систему</a>
 
-  {{ form.email }}
+                        <hr class="my-4">
 
-  {{ form.password1 }}
-
-  {{ form.password2 }}
-
-
-  <input type="submit" value="Зарегистрироваться">
-
-Уже есть аккаунт? <a href="{% url 'users:login' %}">Авторизоваться</a>
-
-</form>
+                        <div class="d-grid mb-2">
+                                <button class="btn btn-lg btn-google btn-login fw-bold text-uppercase" type="submit">
+                                  <i class="fab fa-google me-2"></i> Sign up with Google
+                                </button>
+                        </div>
+                        
+                        <div class="d-grid mb-2">
+                                <button class="btn btn-lg btn-vk btn-login fw-bold text-uppercase" type="submit">
+                                  <i class="fab fa-vk me-2"></i> Sign up with VK
+                                </button>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
