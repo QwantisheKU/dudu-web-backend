@@ -38,7 +38,11 @@
                 <li class="list-group-item">
                     <a href="{% url 'items:item_detail' item.pk %}">{{ item.title }}</a>
                     <span class="text-muted">{{ item.deadline|date:'d m Y' }}</span>
-                    <span class="badge badge-primary">{{ item.tag }}</span>
+                    {% if not item.tag %}
+                        <span class="badge badge-primary">Тег не выбран</span>
+                    {% else %}
+                        <span class="badge badge-primary">{{ item.tag }}</span>
+                    {% endif %}
                     <!-- Кнопка для просмотра деталей задачи -->
                     <a href="{% url 'items:item_detail' item.pk %}" class="btn btn-info btn-sm">Просмотреть</a>
                 </li>
